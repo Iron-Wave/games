@@ -1,0 +1,283 @@
+<html>
+<head>
+<title>Home</title>
+</head>
+<body>
+<style>
+	body {
+		background-color: #232527;
+		color: white;
+		padding-top: 80px;
+	}
+	.topbar {
+		height: 65px;
+		padding-top: 10px;
+		width: 100%;
+		position: fixed;
+		top: 0;
+		left 0;
+		background-color: #191b1d;
+		text-align: right;
+		margin-right: 50px;
+	}
+	.sidebar {
+		height: 5000px;
+		width: 210px;
+		position: fixed;
+		background-color: #191b1d;
+		align: center;
+		top: 0;
+		left: 0;
+        	line-height: 0.5;
+	}
+    	.sidebar-logo {
+    		background-color: #191b1d;
+        	width: 320px;
+    	}
+	.btn {
+		cursor: pointer;
+		background-color: transparent;
+		border-radius: 20px;
+		padding: 10px;
+        	height: 75px;
+        	width: 325px;
+	}
+	.btn:hover {
+		background-color: lightsteelblue;
+		border-radius: 10px;
+		padding: 10px;
+        	height: 75px;
+        	width: 325px;
+	}
+	.btn-sidebar {
+		cursor: pointer;
+		background-color: transparent;
+		border-radius: 20px;
+		padding: 10px;
+        	height: 37.5px;
+        	width: 180px;
+	}
+	.btn-sidebar:hover {
+		background-color: lightsteelblue;
+		border-radius: 10px;
+		padding: 10px;
+        	height: 37.5px;
+        	width: 180px;
+	}
+	.social-link {
+		cursor: pointer;
+		background-color: steelblue;
+        	height: 50px;
+        	width: 50px;
+		border-radius: 10px;
+		box-shadow: steelblue 0px 0px 0px 5px;
+	}
+	.social-link:hover {
+		background-color: lightsteelblue;
+        	height: 50px;
+        	width: 50px;
+		box-shadow: lightsteelblue 0px 0px 0px 5px;
+	}
+  	.main {
+		width: auto;
+		height: auto;
+		background-color: transparent;
+		align: center;
+		margin-left: 220px;
+	}
+  canvas {
+    border: 8px solid black;
+  }
+</style>
+<div class="topbar">
+<div style="margin-right: 50px;">
+<img title="Github Page" class="social-link" onclick="window.open('https://github.com/Iron-Wave/', '_blank'); return false;" src="https://github.com/Iron-Wave/Storage/blob/main/social-logos/github.png?raw=true">
+</div>	
+</div>
+<div class="sidebar">
+<div class="sidebar-logo">
+<img title="Home" style="width: 320px; height: 75px; cursor: pointer;" onclick="location.href='https://iron-wave.github.io/home/'" src="https://github.com/Iron-Wave/Storage/blob/main/images/Iron-wave-logo.png?raw=true">
+</div>
+<br>
+<div style="background-color: #191b1d; border-radius: 10px; width: 200px; margin-right: auto; margin-left: auto;">
+	<img class="btn-sidebar" title="Asteroid Rush" src="https://github.com/Iron-Wave/Storage/blob/main/images/game-logos/asteroid-rush-logo.png?raw=true">
+	<img class="btn-sidebar" title="Crappy Bird" src="https://github.com/Iron-Wave/Storage/blob/main/images/game-logos/crappy-bird-logo.png?raw=true">
+	<img class="btn-sidebar" title="Gun Game" src="https://github.com/Iron-Wave/Storage/blob/main/images/game-logos/gun-game-logo.png?raw=true">
+	<img class="btn-sidebar" title="Ping Pong" src="https://github.com/Iron-Wave/Storage/blob/main/images/game-logos/ping-pong-logo.png?raw=true">
+	<img class="btn-sidebar" title="Snake" src="https://github.com/Iron-Wave/Storage/blob/main/images/game-logos/snake-logo.png?raw=true">
+	<img class="btn-sidebar" title="All Games" src="https://raw.githubusercontent.com/Iron-Wave/Storage/main/images/game-logos/All-Games.png">
+</div>
+</div>
+<div class="main">
+<canvas width="400" height="400" id="game"></canvas>
+<script>
+var canvas = document.getElementById('game');
+var context = canvas.getContext('2d');
+var grid = 16;
+var count = 0;
+var myScore;
+
+var snake = {
+  x: 160,
+  y: 160,
+  dx: grid,
+  dy: 0,
+  cells: [],
+  maxCells: 4
+};
+var apple = {
+  x: 320,
+  y: 320
+};
+
+// get random whole numbers in a specific range
+// @see https://stackoverflow.com/a/1527820/2124254
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+// game loop
+function loop() {
+  requestAnimationFrame(loop);
+
+  // slow game loop to 10 fps instead of 60 (60/10 = 6)
+  if (++count < 6) {
+    return;
+  }
+  score = 0;
+  count = 0;
+  context.clearRect(0,0,canvas.width,canvas.height);
+
+  // move snake by its velocity
+  snake.x += snake.dx;
+  snake.y += snake.dy;
+
+  // wrap snake position horizontally on edge of screen
+  if (snake.x < 0) {
+    snake.x = 160;
+        snake.y = 160;
+        snake.cells = [];
+        snake.maxCells = 4;
+        snake.dx = grid;
+        snake.dy = 0;
+
+        apple.x = getRandomInt(0, 25) * grid;
+        apple.y = getRandomInt(0, 25) * grid;
+  }
+  else if (snake.x >= canvas.width) {
+    snake.x = 160;
+        snake.y = 160;
+        snake.cells = [];
+        snake.maxCells = 4;
+        snake.dx = grid;
+        snake.dy = 0;
+
+        apple.x = getRandomInt(0, 25) * grid;
+        apple.y = getRandomInt(0, 25) * grid;
+  }
+  
+  // wrap snake position vertically on edge of screen
+  if (snake.y < 0) {
+    snake.x = 160;
+        snake.y = 160;
+        snake.cells = [];
+        snake.maxCells = 4;
+        snake.dx = grid;
+        snake.dy = 0;
+
+        apple.x = getRandomInt(0, 25) * grid;
+        apple.y = getRandomInt(0, 25) * grid;
+  }
+  else if (snake.y >= canvas.height) {
+    snake.x = 160;
+        snake.y = 160;
+        snake.cells = [];
+        snake.maxCells = 4;
+        snake.dx = grid;
+        snake.dy = 0;
+
+        apple.x = getRandomInt(0, 25) * grid;
+        apple.y = getRandomInt(0, 25) * grid;
+  }
+
+  // keep track of where snake has been. front of the array is always the head
+  snake.cells.unshift({x: snake.x, y: snake.y});
+
+  // remove cells as we move away from them
+  if (snake.cells.length > snake.maxCells) {
+    snake.cells.pop();
+  }
+
+  // draw apple
+  context.fillStyle = 'black';
+  context.fillRect(apple.x, apple.y, grid-1, grid-1);
+
+  // draw snake one cell at a time
+  context.fillStyle = 'black';
+  snake.cells.forEach(function(cell, index) {
+    
+    // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
+    context.fillRect(cell.x, cell.y, grid-1, grid-1);  
+
+    // snake ate apple
+    if (cell.x === apple.x && cell.y === apple.y) {
+      snake.maxCells++;
+      // canvas is 400x400 which is 25x25 grids 
+      apple.x = getRandomInt(0, 25) * grid;
+      apple.y = getRandomInt(0, 25) * grid;
+    }
+
+    // check collision with all cells after this one (modified bubble sort)
+    for (var i = index + 1; i < snake.cells.length; i++) {
+      
+      // snake occupies same space as a body part. reset game
+      if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
+        snake.x = 160;
+        snake.y = 160;
+        snake.cells = [];
+        snake.maxCells = 4;
+        snake.dx = grid;
+        snake.dy = 0;
+
+        apple.x = getRandomInt(0, 25) * grid;
+        apple.y = getRandomInt(0, 25) * grid;
+      }
+    }
+  });
+}
+
+// listen to keyboard events to move the snake
+document.addEventListener('keydown', function(e) {
+  // prevent snake from backtracking on itself by checking that its 
+  // not already moving on the same axis (pressing left while moving
+  // left wont do anything, and pressing right while moving left
+  // shouldnt let you collide with your own body)
+  
+  // left arrow key
+  if (e.which === 37 && snake.dx === 0) {
+    snake.dx = -grid;
+    snake.dy = 0;
+  }
+  // up arrow key
+  else if (e.which === 38 && snake.dy === 0) {
+    snake.dy = -grid;
+    snake.dx = 0;
+  }
+  // right arrow key
+  else if (e.which === 39 && snake.dx === 0) {
+    snake.dx = grid;
+    snake.dy = 0;
+  }
+  // down arrow key
+  else if (e.which === 40 && snake.dy === 0) {
+    snake.dy = grid;
+    snake.dx = 0;
+  }
+});
+
+// start the game
+requestAnimationFrame(loop);
+</script>
+</div>
+</body>
+</html>
