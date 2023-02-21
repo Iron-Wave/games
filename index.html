@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>Home</title>
+</head>
+<body>
+<style>
+	body {
+		background-color: #232527;
+		color: white;
+		padding-top: 80px;
+	}
+	.topbar {
+		height: 65px;
+		padding-top: 10px;
+		width: 100%;
+		position: fixed;
+		top: 0;
+		left 0;
+		background-color: #191b1d;
+		text-align: right;
+		margin-right: 50px;
+	}
+	.sidebar {
+		height: 5000px;
+		width: 210px;
+		position: fixed;
+		background-color: #191b1d;
+		align: center;
+		top: 0;
+		left: 0;
+        	line-height: 0.5;
+	}
+    	.sidebar-logo {
+    		background-color: #191b1d;
+        	width: 320px;
+    	}
+	.btn {
+		cursor: pointer;
+		background-color: transparent;
+		border-radius: 20px;
+		padding: 10px;
+        	height: 75px;
+        	width: 325px;
+	}
+	.btn:hover {
+		background-color: lightsteelblue;
+		border-radius: 10px;
+		padding: 10px;
+        	height: 75px;
+        	width: 325px;
+	}
+	.btn-sidebar {
+		cursor: pointer;
+		background-color: transparent;
+		border-radius: 20px;
+		padding: 10px;
+        	height: 37.5px;
+        	width: 180px;
+	}
+	.btn-sidebar:hover {
+		background-color: lightsteelblue;
+		border-radius: 10px;
+		padding: 10px;
+        	height: 37.5px;
+        	width: 180px;
+	}
+	.social-link {
+		cursor: pointer;
+		background-color: steelblue;
+        	height: 50px;
+        	width: 50px;
+		border-radius: 10px;
+		box-shadow: steelblue 0px 0px 0px 5px;
+	}
+	.social-link:hover {
+		background-color: lightsteelblue;
+        	height: 50px;
+        	width: 50px;
+		box-shadow: lightsteelblue 0px 0px 0px 5px;
+	}
+  	.main {
+		width: auto;
+		height: auto;
+		background-color: transparent;
+		align: center;
+		margin-left: 220px;
+	}
+</style>
+<div class="topbar">
+<div style="margin-right: 50px;">
+<img title="Github Page" class="social-link" onclick="window.open('https://github.com/Iron-Wave/', '_blank'); return false;" src="https://github.com/Iron-Wave/Storage/blob/main/social-logos/github.png?raw=true">
+</div>	
+</div>
+<div class="sidebar">
+<div class="sidebar-logo">
+<img title="Home" style="width: 320px; height: 75px; cursor: pointer;" onclick="location.href='https://iron-wave.github.io/home/'" src="https://github.com/Iron-Wave/Storage/blob/main/images/Iron-wave-logo.png?raw=true">
+</div>
+<br>
+<div style="background-color: #191b1d; border-radius: 10px; width: 200px; margin-right: auto; margin-left: auto;">
+	<img class="btn-sidebar" onclick="location.href='https://iron-wave.github.io/games/asteroid-rush/'" title="Asteroid Rush" src="https://github.com/Iron-Wave/Storage/blob/main/images/game-logos/asteroid-rush-logo.png?raw=true">
+	<img class="btn-sidebar" onclick="location.href='https://iron-wave.github.io/games/crappy-bird/'" title="Crappy Bird" src="https://github.com/Iron-Wave/Storage/blob/main/images/game-logos/crappy-bird-logo.png?raw=true">
+	<img class="btn-sidebar" onclick="location.href='https://iron-wave.github.io/games/gun-game/'" title="Gun Game" src="https://github.com/Iron-Wave/Storage/blob/main/images/game-logos/gun-game-logo.png?raw=true">
+	<img class="btn-sidebar" onclick="location.href='https://iron-wave.github.io/games/ping-pong/'" title="Ping Pong" src="https://github.com/Iron-Wave/Storage/blob/main/images/game-logos/ping-pong-logo.png?raw=true">
+	<img class="btn-sidebar" onclick="location.href='https://iron-wave.github.io/games/snake/'" title="Snake" src="https://github.com/Iron-Wave/Storage/blob/main/images/game-logos/snake-logo.png?raw=true">
+	<img class="btn-sidebar" onclick="location.href='https://iron-wave.github.io/games/'" title="All Games" src="https://raw.githubusercontent.com/Iron-Wave/Storage/main/images/game-logos/All-Games.png">
+</div>
+</div>
+<div class="main">
+  <p>All games can currently be found in the sidebar.</p>
+</div>
+</body>
+</html>
