@@ -86,7 +86,7 @@
 		margin-left: 220px;
 	}
   canvas {
-    border: 8px solid white;
+    border: 8px solid #191b1d;
   }
 </style>
 <div class="topbar">
@@ -209,11 +209,11 @@ function loop() {
   }
 
   // draw apple
-  context.fillStyle = 'white';
+  context.fillStyle = 'red';
   context.fillRect(apple.x, apple.y, grid-1, grid-1);
 
   // draw snake one cell at a time
-  context.fillStyle = 'white';
+  context.fillStyle = 'green';
   snake.cells.forEach(function(cell, index) {
     
     // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
