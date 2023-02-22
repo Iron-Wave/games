@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Home</title>
+<title>Ping Pong</title>
 </head>
 <body>
 <style>
@@ -186,7 +186,7 @@ function loop() {
   }
 
   // draw paddles
-  context.fillStyle = 'white';
+  context.fillStyle = 'lightgray';
   context.fillRect(leftPaddle.x, leftPaddle.y, leftPaddle.width, leftPaddle.height);
   context.fillRect(rightPaddle.x, rightPaddle.y, rightPaddle.width, rightPaddle.height);
 
@@ -233,17 +233,17 @@ function loop() {
   }
 
   // draw ball
-  context.fillStyle = 'white';
+  context.fillStyle = 'lightgray';
   context.fillRect(ball.x, ball.y, ball.width, ball.height);
 
   // draw walls
-  context.fillStyle = 'white';
+  context.fillStyle = 'gray';
   context.fillRect(0, 0, canvas.width, grid);
   context.fillRect(0, canvas.height - grid, canvas.width, canvas.height);
 
   // draw dotted line down the middle
   for (let i = grid; i < canvas.height - grid; i += grid * 2) {
-    context.fillStyle = 'white';
+    context.fillStyle = 'gray';
     context.fillRect(canvas.width / 2 - grid / 2, i, grid, grid);
   }
 }
