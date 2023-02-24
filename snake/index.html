@@ -85,9 +85,18 @@
 		align: center;
 		margin-left: 220px;
 	}
-  canvas {
-    border: 8px solid gray;
-  }
+	.game-container {
+    		width: auto;
+        	height: auto;
+        	background-color: #191b1d;
+        	padding: 20px;
+        	border-radius: 10px;
+	}
+	canvas {
+		border: 8px solid steelblue;
+    		background-color: black;
+    		border-radius: 10px;
+  	}
 </style>
 <div class="topbar">
 <div style="margin-right: 50px;">
@@ -108,6 +117,7 @@
 	<img class="btn-sidebar" onclick="location.href='https://iron-wave.github.io/games/'" title="All Games" src="https://raw.githubusercontent.com/Iron-Wave/Storage/main/images/game-logos/All-Games.png">
 </div>
 </div>
+<div class="game-container">
 <div class="main">
 <canvas width="400" height="400" id="game"></canvas>
 <script>
@@ -278,6 +288,7 @@ document.addEventListener('keydown', function(e) {
 // start the game
 requestAnimationFrame(loop);
 </script>
+</div>
 </div>
 </body>
 </html>
