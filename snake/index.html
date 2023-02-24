@@ -86,8 +86,8 @@
 		margin-left: 220px;
 	}
 	.game-container {
-    		width: auto;
-        	height: auto;
+    		width: 400px;
+        	height: 400px;
         	background-color: #191b1d;
         	padding: 20px;
         	border-radius: 10px;
@@ -219,11 +219,11 @@ function loop() {
   }
 
   // draw apple
-  context.fillStyle = 'lightgray';
+  context.fillStyle = 'red';
   context.fillRect(apple.x, apple.y, grid-1, grid-1);
 
   // draw snake one cell at a time
-  context.fillStyle = 'lightgray';
+  context.fillStyle = 'limegreen';
   snake.cells.forEach(function(cell, index) {
     
     // drawing 1 px smaller than the grid creates a grid effect in the snake body so you can see how long it is
