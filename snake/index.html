@@ -86,8 +86,8 @@
 		margin-left: 220px;
 	}
 	.game-container {
-    		width: 400px;
-        	height: 400px;
+    		width: 420px;
+        	height: 420px;
         	background-color: #191b1d;
         	padding: 20px;
         	border-radius: 10px;
@@ -96,6 +96,8 @@
 		border: 8px solid steelblue;
     		background-color: black;
     		border-radius: 10px;
+		width: 400px;
+		height: 400px;
   	}
 </style>
 <div class="topbar">
@@ -119,7 +121,7 @@
 </div>
 <div class="main">
 <div class="game-container">
-<canvas width="400" height="400" id="game"></canvas>
+<canvas id="game"></canvas>
 <script>
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
