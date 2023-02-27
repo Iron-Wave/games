@@ -85,6 +85,20 @@
 		align: center;
 		margin-left: 220px;
 	}
+	.game-container {
+    		width: 620px;
+        	height: 420px;
+        	background-color: #191b1d;
+        	padding: 20px;
+        	border-radius: 10px;
+	}
+	canvas {
+		border: 8px solid steelblue;
+    		background-color: black;
+    		border-radius: 10px;
+		width: 600px;
+		height: 400px;
+  	}
 </style>
 <div class="topbar">
 <div style="margin-right: 50px;">
@@ -106,7 +120,7 @@
 </div>
 </div>
 <div class="main">
-<canvas width="600" height="400" id="game"></canvas>
+<canvas id="game"></canvas>
 <script>
 const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
@@ -185,9 +199,12 @@ function loop() {
     rightPaddle.y = maxPaddleY;
   }
 
-  // draw paddles
-  context.fillStyle = 'lightgray';
+  // draw left paddle
+  context.fillStyle = 'blue';
   context.fillRect(leftPaddle.x, leftPaddle.y, leftPaddle.width, leftPaddle.height);
+  
+  // draw right paddle
+  context.fillStyle = 'red';
   context.fillRect(rightPaddle.x, rightPaddle.y, rightPaddle.width, rightPaddle.height);
 
   // move ball by its velocity
@@ -233,17 +250,17 @@ function loop() {
   }
 
   // draw ball
-  context.fillStyle = 'lightgray';
+  context.fillStyle = 'white';
   context.fillRect(ball.x, ball.y, ball.width, ball.height);
 
   // draw walls
-  context.fillStyle = 'gray';
+  context.fillStyle = 'steelblue';
   context.fillRect(0, 0, canvas.width, grid);
   context.fillRect(0, canvas.height - grid, canvas.width, canvas.height);
 
   // draw dotted line down the middle
   for (let i = grid; i < canvas.height - grid; i += grid * 2) {
-    context.fillStyle = 'gray';
+    context.fillStyle = 'steelblue';
     context.fillRect(canvas.width / 2 - grid / 2, i, grid, grid);
   }
 }
